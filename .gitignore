@@ -24,7 +24,8 @@
 .DS_Store
 *.pem
 
-# debug
+# debug and logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -32,6 +33,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +41,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local database & runtime data files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.tmp
+/data/*.json
+/data/*.tmp
+!/data/.gitkeep

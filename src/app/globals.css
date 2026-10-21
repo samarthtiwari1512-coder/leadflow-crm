@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ink: #17243A;
+  --color-ink-secondary: #475569;
+  --color-ink-muted: #64748B;
+  --color-ink-subtle: #94A3B8;
+
+  --color-blue: #365CF5;
+  --color-blue-hover: #2649DB;
+  --color-blue-subtle: #EEF2FF;
+  --color-blue-border: #C7D4FE;
+
+  --color-mint: #D9F5E7;
+  --color-mint-dark: #0A6341;
+  --color-mint-border: #A5E8C9;
+
+  --color-cloud: #F7F8FA;
+  --color-cloud-subtle: #EFF1F5;
+  --color-cloud-border: #E5E9F0;
+
+  --color-coral: #E66B59;
+  --color-coral-dark: #A62E1E;
+  --color-coral-subtle: #FDF2F0;
+  --color-coral-border: #F5C2BA;
+
+  --color-surface: #FFFFFF;
+  --color-border: #E5E9F0;
+
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #F7F8FA;
+  --foreground: #17243A;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F7F8FA;
+  color: #17243A;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
 }
