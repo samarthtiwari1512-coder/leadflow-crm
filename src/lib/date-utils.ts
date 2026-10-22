@@ -26,14 +26,24 @@ export function isToday(dateStr: string | null | undefined): boolean {
 
 /**
  * Checks whether a scheduled follow-up is overdue:
- * Either the date is before today, OR it is scheduled for today but the time has passed.
+ * Scheduled for a past calendar day (before the start of today).
+ * Follow-ups scheduled for today remain in Today's Follow-ups throughout the day.
  */
 export function isOverdue(dateStr: string | null | undefined): boolean {
   const d = parseDate(dateStr);
   if (!d) return false;
 
   const now = new Date();
-  return d.getTime() < now.getTime();
+  const startOfToday = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+    0,
+    0,
+    0,
+    0
+  );
+  return d.getTime() < startOfToday.getTime();
 }
 
 /**
@@ -90,7 +100,7 @@ export function formatFollowUpDisplay(dateStr: string | null | undefined): strin
   });
 
   if (isToday(dateStr)) {
-    return isOverdue(dateStr) ? `Today, ${timeStr} (Past)` : `Today, ${timeStr}`;
+    return `Today, ${timeStr}`;
   }
 
   const yesterday = new Date(now);
@@ -100,7 +110,7 @@ export function formatFollowUpDisplay(dateStr: string | null | undefined): strin
     d.getMonth() === yesterday.getMonth() &&
     d.getDate() === yesterday.getDate()
   ) {
-    return `Yesterday (Overdue)`;
+    return `Yesterday, ${timeStr} (Overdue)`;
   }
 
   const tomorrow = new Date(now);

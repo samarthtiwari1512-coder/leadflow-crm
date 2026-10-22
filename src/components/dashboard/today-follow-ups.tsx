@@ -5,6 +5,7 @@ import { Clock, Building2, ChevronRight, CalendarDays, CheckCircle2, AlertTriang
 import { FollowUpItem } from "@/types/lead";
 import { StatusBadge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { isToday } from "@/lib/date-utils";
 
 interface TodayFollowUpsProps {
   followUps: FollowUpItem[];
@@ -16,10 +17,10 @@ export const TodayFollowUps: React.FC<TodayFollowUpsProps> = ({
   onSelectLead,
 }) => {
   // Filter for today's follow-ups and all overdue follow-ups requiring attention
-  const urgentFollowUps = followUps.filter((f) => f.isOverdue || f.scheduledTime.includes("Today"));
+  const urgentFollowUps = followUps.filter((f) => f.isOverdue || isToday(f.rawDate));
 
   const overdueCount = urgentFollowUps.filter((f) => f.isOverdue).length;
-  const todayCount = urgentFollowUps.filter((f) => !f.isOverdue).length;
+  const todayCount = urgentFollowUps.filter((f) => isToday(f.rawDate)).length;
 
   return (
     <section
