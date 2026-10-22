@@ -40,7 +40,7 @@ export const StatusFilterBar: React.FC<StatusFilterBarProps> = ({
     <div
       role="tablist"
       aria-label="Filter leads by pipeline status"
-      className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none"
+      className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 scrollbar-none"
     >
       {FILTER_OPTIONS.map((tab) => {
         const isSelected = currentFilter === tab.value;
@@ -53,18 +53,18 @@ export const StatusFilterBar: React.FC<StatusFilterBarProps> = ({
             aria-selected={isSelected}
             onClick={() => onFilterChange(tab.value)}
             className={cn(
-              "inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-all cursor-pointer border select-none outline-none focus-visible:ring-2 focus-visible:ring-blue",
+              "inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-[3px] whitespace-nowrap transition-colors cursor-pointer border select-none outline-none focus-visible:ring-1 focus-visible:ring-forest",
               isSelected
-                ? "bg-blue text-white border-blue shadow-xs font-semibold"
-                : "bg-surface text-ink-secondary border-cloud-border hover:bg-cloud hover:text-ink"
+                ? "bg-forest text-surface border-forest font-semibold"
+                : "bg-surface text-ink-secondary border-cloud-border hover:bg-cloud hover:text-ink font-medium"
             )}
           >
             <span>{tab.label}</span>
             <span
               className={cn(
-                "inline-flex items-center justify-center min-w-5 h-4.5 px-1.5 text-[10px] rounded-full font-semibold",
+                "inline-flex items-center justify-center min-w-4.5 h-4 px-1 text-[10px] font-mono rounded-[2px]",
                 isSelected
-                  ? "bg-white/20 text-white"
+                  ? "bg-white/20 text-surface font-semibold"
                   : "bg-cloud text-ink-muted border border-cloud-border"
               )}
             >

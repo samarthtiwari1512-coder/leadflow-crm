@@ -1,48 +1,62 @@
 /**
- * Midnight Fintech Design System Tokens
+ * Editorial Fintech Design System Tokens
  * Reusable color tokens for LeadFlow CRM
  */
 export const DESIGN_TOKENS = {
   colors: {
-    // Core Midnight Fintech Palette
+    // Editorial Warm Charcoal Typography
     ink: {
-      DEFAULT: "#17243A", // Primary text, headings, dark surfaces
-      secondary: "#475569", // Supporting text, table captions
-      muted: "#64748B", // Subdued labels, timestamps
-      subtle: "#94A3B8", // Icons, disabled state, subtle borders
+      DEFAULT: "#282A25", // Charcoal primary text, headings
+      secondary: "#4D5048", // Supporting text, table captions
+      muted: "#73766D", // Subdued labels, timestamps
+      subtle: "#9E9F97", // Icons, disabled state
     },
-    blue: {
-      DEFAULT: "#365CF5", // Primary actions, active filters, interactive links
-      hover: "#2649DB", // Button hover state
-      subtle: "#EEF2FF", // Active filter badge background, focus highlight
-      border: "#C7D4FE", // Accent boundary borders
+    // Deep Forest Green - Primary actions & active tabs
+    forest: {
+      DEFAULT: "#244C3A",
+      hover: "#1D3D2F",
+      active: "#173125",
+      subtle: "#EBF2E9",
+      border: "#C8DBC3",
     },
-    mint: {
-      DEFAULT: "#D9F5E7", // Subtle positive highlights, won status pill
-      dark: "#0A6341", // Dark mint for accessible high-contrast text
-      border: "#A5E8C9",
+    // Terracotta - Restrained accent & milestone highlights
+    terracotta: {
+      DEFAULT: "#D97757",
+      hover: "#C56546",
+      subtle: "#FDF3EE",
+      border: "#F4D3C7",
     },
-    cloud: {
-      DEFAULT: "#F7F8FA", // Main page background
-      subtle: "#EFF1F5", // Card hover background, secondary surfaces
-      border: "#E5E9F0", // Card and section border lines
+    // Muted Sage - Calming secondary surfaces & chips
+    sage: {
+      DEFAULT: "#DCE5D8",
+      dark: "#244C3A",
+      border: "#C5D4BF",
     },
+    // Warm Ivory Canvas & Cream Surfaces
+    ivory: {
+      DEFAULT: "#F5F1E8", // Warm ivory canvas
+      subtle: "#EDE7DA",
+      border: "#DED8CC", // Subtle warm borders
+    },
+    surface: "#FFFEFA", // White/cream surfaces
+    // Overdue Follow-ups - Crisp Editorial Crimson
     coral: {
-      DEFAULT: "#E66B59", // Overdue follow-ups, urgent warnings
-      dark: "#A62E1E", // High-contrast text on coral backgrounds
-      subtle: "#FDF2F0", // Overdue card background tint
-      border: "#F5C2BA",
+      DEFAULT: "#B83A2E",
+      dark: "#8C2218",
+      subtle: "#FDF1F0",
+      border: "#EBBFBA",
     },
-    surface: "#FFFFFF",
   },
   typography: {
-    fontFamily: "var(--font-geist-sans), sans-serif",
+    fontSerif: '"Newsreader", "Charter", "Bitstream Charter", "Georgia", "Cambria", serif',
+    fontSans: 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    fontMono: 'var(--font-geist-mono), monospace',
   },
   radii: {
-    sm: "6px",
-    md: "8px",
-    lg: "12px",
-    full: "9999px",
+    xs: "2px",
+    sm: "3px",
+    md: "4px",
+    lg: "6px",
   },
 } as const;
 

@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "LeadFlow — Lead Management Dashboard",
-  description: "A lightweight single-screen Lead Management CRM with Midnight Fintech design.",
+  description: "A lightweight single-screen Lead Management CRM with Editorial Fintech design.",
 };
 
 export default function RootLayout({

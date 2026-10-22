@@ -115,19 +115,19 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   const isFiltered = selectedStatus !== "All" || searchQuery.trim() !== "";
 
   return (
-    <div className="min-h-screen flex flex-col bg-cloud text-ink">
+    <div className="min-h-screen flex flex-col bg-cloud text-ink font-sans">
       {/* 1. Header with brand wordmark and Add New Lead action */}
       <Header onAddNewLead={() => setIsAddLeadOpen(true)} />
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8">
-        {/* 2. Page Introduction & Summary Strip (Dynamic persistence stats) */}
+        {/* 2. Page Introduction & Summary Strip */}
         <SummaryStrip
           stats={stats}
           totalLeadsCount={leads.length}
         />
 
-        {/* 3. Today's Follow-ups Section (pinned above main lead list, overdue visibly red) */}
+        {/* 3. Today's Follow-ups Section */}
         <TodayFollowUps
           followUps={followUps}
           onSelectLead={handleSelectLeadById}
@@ -137,13 +137,16 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         <section aria-labelledby="all-leads-heading" className="space-y-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
             <div>
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-ink-muted block mb-0.5">
+                Institutional Accounts
+              </span>
               <h2
                 id="all-leads-heading"
-                className="text-base font-bold text-ink tracking-tight"
+                className="font-serif text-base font-bold text-ink tracking-tight"
               >
                 Pipeline Opportunities
               </h2>
-              <p className="text-xs text-ink-muted">
+              <p className="text-xs text-ink-secondary">
                 Filter and manage accounts currently progressing through your sales cycle
               </p>
             </div>
@@ -168,12 +171,12 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-cloud-border py-4 bg-surface text-center text-xs text-ink-muted">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>LeadFlow CRM • Pravar AI Coding Assessment</span>
-          <span className="text-[11px] text-ink-subtle">
-            Part 2: Functional CRM &amp; Persistence Active
+      {/* Editorial Footer */}
+      <footer className="border-t border-cloud-border py-4 bg-surface text-center text-xs text-ink-secondary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <span className="font-serif font-medium text-ink">LeadFlow CRM • Editorial Portfolio Edition</span>
+          <span className="font-mono text-[11px] text-ink-muted">
+            Pravar AI Assessment • Part 2 Active
           </span>
         </div>
       </footer>

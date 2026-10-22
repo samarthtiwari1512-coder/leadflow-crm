@@ -14,7 +14,7 @@ import {
   CalendarCheck,
   Check,
   Loader2,
-  ArrowRight,
+  AlertTriangle,
 } from "lucide-react";
 import { Lead, LeadStatus, FollowUpItem, SummaryStats } from "@/types/lead";
 import { StatusBadge } from "@/components/ui/badge";
@@ -158,21 +158,24 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-ink/40 backdrop-blur-xs transition-opacity"
+        className="fixed inset-0 bg-ink/40 transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Modal Surface */}
-      <div className="relative w-full max-w-2xl max-h-[90vh] rounded-2xl bg-surface border border-cloud-border shadow-2xl flex flex-col z-10 overflow-hidden">
+      <div className="relative w-full max-w-2xl max-h-[90vh] rounded-md bg-surface border border-cloud-border shadow-xl flex flex-col z-10 overflow-hidden">
         {/* Header */}
-        <div className="px-6 py-4.5 border-b border-cloud-border bg-cloud/50 shrink-0">
+        <div className="px-6 py-4.5 border-b border-cloud-border bg-cloud/60 shrink-0">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-ink-muted block mb-0.5">
+                Client Profile
+              </span>
               <div className="flex items-center gap-2.5 flex-wrap">
                 <h3
                   id="lead-modal-title"
-                  className="text-lg font-bold text-ink tracking-tight truncate"
+                  className="font-serif text-xl font-bold text-ink tracking-tight truncate"
                 >
                   {lead.name}
                 </h3>
@@ -187,7 +190,7 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
                 {lead.dealValue && (
                   <>
                     <span>•</span>
-                    <span className="font-semibold text-ink">{lead.dealValue}</span>
+                    <span className="font-semibold text-ink font-mono">{lead.dealValue}</span>
                   </>
                 )}
               </div>
@@ -195,10 +198,10 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-ink-subtle hover:text-ink hover:bg-cloud border border-transparent hover:border-cloud-border transition-colors cursor-pointer shrink-0"
+              className="p-1.5 rounded-[3px] text-ink-muted hover:text-ink hover:bg-cloud border border-transparent hover:border-cloud-border transition-colors cursor-pointer shrink-0"
               aria-label="Close dialog"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
 
@@ -208,7 +211,7 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
             <div className="flex items-center gap-2">
               <label
                 htmlFor="lead-stage-select"
-                className="text-xs font-semibold text-ink uppercase tracking-wider shrink-0"
+                className="text-[10px] font-semibold text-ink-secondary uppercase tracking-widest shrink-0"
               >
                 Pipeline Stage:
               </label>
@@ -218,7 +221,7 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
                   value={lead.status}
                   disabled={isUpdatingStatus}
                   onChange={(e) => handleStatusChange(e.target.value as LeadStatus)}
-                  className="h-8 pl-2.5 pr-8 text-xs font-semibold rounded-md border border-cloud-border bg-surface text-ink outline-none hover:border-slate-300 focus:border-blue focus:ring-2 focus:ring-blue/15 disabled:opacity-50 cursor-pointer"
+                  className="h-8 pl-2.5 pr-8 text-xs font-semibold rounded-[3px] border border-cloud-border bg-surface text-ink outline-none hover:border-ink-subtle focus:border-forest focus:ring-1 focus:ring-forest disabled:opacity-50 cursor-pointer"
                 >
                   {ALL_STATUSES.map((st) => (
                     <option key={st} value={st}>
@@ -227,12 +230,12 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
                   ))}
                 </select>
                 {isUpdatingStatus && (
-                  <Loader2 className="w-3.5 h-3.5 text-blue animate-spin absolute right-2 pointer-events-none" />
+                  <Loader2 className="w-3.5 h-3.5 text-forest animate-spin absolute right-2 pointer-events-none" />
                 )}
               </div>
               {statusMessage && (
-                <span className="text-[11px] font-medium text-emerald-600 flex items-center gap-1">
-                  <Check className="w-3 h-3" />
+                <span className="text-[11px] font-medium text-forest flex items-center gap-1">
+                  <Check className="w-3 h-3 text-forest" />
                   {statusMessage}
                 </span>
               )}
@@ -241,16 +244,16 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
             {/* Next Follow-up Indicator */}
             {hasNextFollowUp && (
               <div
-                className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-md border ${
+                className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-[2px] border ${
                   followUpIsOverdue
-                    ? "bg-coral-subtle border-coral-border text-coral-dark font-medium"
-                    : "bg-blue-subtle/70 border-blue-border text-blue"
+                    ? "bg-coral-subtle border-coral-border text-coral-dark font-bold"
+                    : "bg-forest-subtle border-forest-border text-forest font-semibold"
                 }`}
               >
                 {followUpIsOverdue ? (
-                  <AlertCircle className="w-3.5 h-3.5 text-coral shrink-0" />
+                  <AlertTriangle className="w-3.5 h-3.5 text-coral-dark shrink-0" />
                 ) : (
-                  <CalendarCheck className="w-3.5 h-3.5 text-blue shrink-0" />
+                  <CalendarCheck className="w-3.5 h-3.5 text-forest shrink-0" />
                 )}
                 <span>
                   Next Follow-up: <strong>{formatFollowUpDisplay(lead.nextFollowUpDate)}</strong>
@@ -263,13 +266,13 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
         {/* Scrollable Modal Content */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Contact Details Bar */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-3 rounded-xl bg-cloud/40 border border-cloud-border text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-3 rounded-[3px] bg-cloud/50 border border-cloud-border text-xs">
             <div className="flex items-center gap-2 text-ink-secondary truncate">
               <Mail className="w-3.5 h-3.5 text-ink-subtle shrink-0" />
               <span className="text-ink-muted">Email:</span>
               <a
                 href={`mailto:${lead.email}`}
-                className="font-mono text-ink hover:text-blue hover:underline truncate"
+                className="font-mono text-ink hover:text-forest hover:underline truncate"
               >
                 {lead.email}
               </a>
@@ -286,17 +289,17 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
           {/* Add New Discussion Note Form */}
           <section
             aria-labelledby="add-note-heading"
-            className="rounded-xl border border-cloud-border bg-surface p-4 shadow-xs space-y-3"
+            className="rounded-[3px] border border-cloud-border bg-surface p-4 shadow-none space-y-3"
           >
             <div className="flex items-center justify-between">
               <h4
                 id="add-note-heading"
-                className="text-xs font-bold text-ink uppercase tracking-wider flex items-center gap-1.5"
+                className="text-[10px] font-bold text-ink uppercase tracking-widest flex items-center gap-1.5"
               >
-                <MessageSquare className="w-3.5 h-3.5 text-blue" />
+                <MessageSquare className="w-3.5 h-3.5 text-forest" />
                 Add Discussion Note
               </h4>
-              <span className="text-[11px] text-ink-subtle">
+              <span className="text-[10px] font-mono text-ink-muted">
                 Updates timeline and last activity
               </span>
             </div>
@@ -308,7 +311,7 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
                 placeholder="Log notes from meeting, phone call, or email exchange..."
                 value={noteContent}
                 onChange={(e) => setNoteContent(e.target.value)}
-                className="w-full rounded-lg border border-cloud-border bg-cloud/30 p-2.5 text-xs text-ink placeholder:text-ink-subtle outline-none focus:bg-surface focus:border-blue focus:ring-2 focus:ring-blue/15 transition-all resize-y"
+                className="w-full rounded-[3px] border border-cloud-border bg-cloud/30 p-2.5 text-xs text-ink placeholder:text-ink-subtle outline-none focus:bg-surface focus:border-forest focus:ring-1 focus:ring-forest transition-colors resize-y"
               />
 
               {/* Schedule Follow-up Toggle */}
@@ -318,30 +321,30 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
                     type="checkbox"
                     checked={scheduleFollowUp}
                     onChange={(e) => setScheduleFollowUp(e.target.checked)}
-                    className="w-3.5 h-3.5 rounded text-blue focus:ring-blue border-cloud-border"
+                    className="w-3.5 h-3.5 rounded-[2px] text-forest focus:ring-forest border-cloud-border cursor-pointer"
                   />
                   <span className="text-xs font-semibold text-ink flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-blue" />
+                    <Calendar className="w-3.5 h-3.5 text-forest" />
                     Schedule next follow-up with this note
                   </span>
                 </label>
 
                 {scheduleFollowUp && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-3 rounded-lg bg-cloud/50 border border-cloud-border text-xs">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-3 rounded-[3px] bg-cloud/50 border border-cloud-border text-xs">
                     <div>
-                      <label className="block text-[11px] font-semibold text-ink-secondary mb-1">
-                        Follow-up Date & Time *
+                      <label className="block text-[10px] font-semibold uppercase tracking-wider text-ink-secondary mb-1">
+                        Follow-up Date &amp; Time *
                       </label>
                       <input
                         type="datetime-local"
                         required={scheduleFollowUp}
                         value={followUpDate}
                         onChange={(e) => setFollowUpDate(e.target.value)}
-                        className="w-full h-8 px-2 text-xs rounded-md border border-cloud-border bg-surface text-ink outline-none focus:border-blue focus:ring-1 focus:ring-blue"
+                        className="w-full h-8 px-2 text-xs rounded-[3px] border border-cloud-border bg-surface text-ink outline-none focus:border-forest focus:ring-1 focus:ring-forest font-mono"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-semibold text-ink-secondary mb-1">
+                      <label className="block text-[10px] font-semibold uppercase tracking-wider text-ink-secondary mb-1">
                         Next Action / Commitment
                       </label>
                       <input
@@ -349,7 +352,7 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
                         placeholder="e.g. Deliver revised contract SLA"
                         value={followUpAction}
                         onChange={(e) => setFollowUpAction(e.target.value)}
-                        className="w-full h-8 px-2.5 text-xs rounded-md border border-cloud-border bg-surface text-ink placeholder:text-ink-subtle outline-none focus:border-blue focus:ring-1 focus:ring-blue"
+                        className="w-full h-8 px-2.5 text-xs rounded-[3px] border border-cloud-border bg-surface text-ink placeholder:text-ink-subtle outline-none focus:border-forest focus:ring-1 focus:ring-forest"
                       />
                     </div>
                   </div>
@@ -357,9 +360,9 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
               </div>
 
               {noteError && (
-                <div className="text-xs text-coral-dark font-medium flex items-center gap-1">
-                  <AlertCircle className="w-3.5 h-3.5" />
-                  {noteError}
+                <div className="text-xs text-coral-dark font-medium flex items-center gap-1.5 p-2 rounded-[3px] bg-coral-subtle border border-coral-border">
+                  <AlertCircle className="w-3.5 h-3.5 shrink-0 text-coral-dark" />
+                  <span>{noteError}</span>
                 </div>
               )}
 
@@ -388,71 +391,50 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
             <div className="flex items-center justify-between pb-1 border-b border-cloud-border">
               <h4
                 id="timeline-heading"
-                className="text-xs font-bold text-ink uppercase tracking-wider flex items-center gap-1.5"
+                className="font-serif text-sm font-bold text-ink flex items-center gap-1.5"
               >
-                <Clock className="w-3.5 h-3.5 text-ink-subtle" />
+                <Clock className="w-3.5 h-3.5 text-forest" />
                 Discussion Timeline ({lead.notes?.length || 0})
               </h4>
-              <span className="text-[11px] text-ink-subtle">
+              <span className="text-[10px] font-mono text-ink-muted uppercase tracking-wider">
                 Reverse chronological (newest first)
               </span>
             </div>
 
             {!lead.notes || lead.notes.length === 0 ? (
-              <div className="text-center py-8 px-4 rounded-xl border border-dashed border-cloud-border text-xs text-ink-muted">
+              <div className="text-center py-8 px-4 rounded-[3px] border border-dashed border-cloud-border text-xs text-ink-muted">
                 No discussion notes recorded yet. Add the first note above.
               </div>
             ) : (
-              <div className="relative pl-6 space-y-4 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-cloud-border">
-                {lead.notes.map((note, index) => (
+              <div className="relative pl-5 space-y-3.5 before:absolute before:left-1.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-cloud-border">
+                {lead.notes.map((note) => (
                   <div key={note.id} className="relative group">
                     {/* Timeline Node Icon */}
-                    <div
-                      className={`absolute -left-6 top-1 w-4 h-4 rounded-full border-2 bg-surface flex items-center justify-center transition-colors ${
-                        index === 0
-                          ? "border-blue ring-2 ring-blue/20"
-                          : "border-slate-300"
-                      }`}
-                    >
-                      <div
-                        className={`w-1.5 h-1.5 rounded-full ${
-                          index === 0 ? "bg-blue" : "bg-slate-400"
-                        }`}
-                      />
-                    </div>
+                    <div className="absolute -left-5 top-2 w-3 h-3 rounded-[2px] bg-forest border-2 border-surface shrink-0" />
 
-                    {/* Timeline Note Card */}
-                    <div className="p-3.5 rounded-xl border border-cloud-border bg-surface shadow-xs space-y-2 group-hover:border-slate-300 transition-colors">
-                      <div className="flex items-center justify-between gap-2 flex-wrap">
-                        <span className="text-xs font-semibold text-ink">
-                          {note.author || "Sales Rep"}
+                    {/* Timeline Card */}
+                    <div className="rounded-[3px] border border-cloud-border bg-surface p-3.5 shadow-none space-y-1.5 transition-colors group-hover:border-forest/50">
+                      <div className="flex items-center justify-between gap-2 text-xs">
+                        <span className="font-semibold text-ink text-xs">
+                          {note.author}
                         </span>
-                        <div className="flex items-center gap-2 text-[11px] text-ink-muted">
-                          <span>{formatDetailedDateTime(note.createdAt)}</span>
-                          <span>•</span>
-                          <span className="font-medium text-ink-secondary">
-                            {formatRelativeTime(note.createdAt)}
-                          </span>
-                        </div>
+                        <span className="text-[10px] font-mono text-ink-muted">
+                          {formatDetailedDateTime(note.createdAt)} ({formatRelativeTime(note.createdAt)})
+                        </span>
                       </div>
 
-                      <p className="text-xs text-ink leading-relaxed whitespace-pre-wrap">
+                      <p className="text-xs text-ink-secondary leading-relaxed whitespace-pre-wrap">
                         {note.content}
                       </p>
 
-                      {/* Attached Follow-up Badge if scheduled with this note */}
+                      {/* Scheduled follow up attached to this note */}
                       {note.followUpDate && (
-                        <div className="mt-2 pt-2 border-t border-cloud-border/60 flex items-center gap-2 flex-wrap text-[11px]">
-                          <span className="inline-flex items-center gap-1 font-semibold text-blue bg-blue-subtle px-2 py-0.5 rounded-md border border-blue-border">
-                            <CalendarCheck className="w-3 h-3" />
-                            Scheduled: {formatFollowUpDisplay(note.followUpDate)}
+                        <div className="mt-2 pt-2 border-t border-cloud-border/60 flex items-center gap-2 text-[11px] font-medium text-forest bg-forest-subtle/50 px-2 py-1 rounded-[2px]">
+                          <CalendarCheck className="w-3 h-3 text-forest shrink-0" />
+                          <span>
+                            Next Step: {note.followUpAction || "Follow-up scheduled"} •{" "}
+                            <span className="font-mono">{formatDetailedDateTime(note.followUpDate)}</span>
                           </span>
-                          {note.followUpAction && (
-                            <span className="text-ink-secondary flex items-center gap-1">
-                              <ArrowRight className="w-3 h-3 text-ink-subtle" />
-                              {note.followUpAction}
-                            </span>
-                          )}
                         </div>
                       )}
                     </div>
@@ -463,13 +445,13 @@ export const LeadDetailModal: React.FC<LeadDetailModalProps> = ({
           </section>
         </div>
 
-        {/* Footer */}
-        <div className="px-6 py-3.5 border-t border-cloud-border flex items-center justify-between bg-cloud/30 shrink-0">
-          <span className="text-[11px] text-ink-muted">
-            All updates persist to the database immediately.
+        {/* Modal Footer */}
+        <div className="px-6 py-3 border-t border-cloud-border flex items-center justify-between bg-cloud/30 shrink-0 text-xs text-ink-muted">
+          <span className="font-mono text-[11px]">
+            Created: {formatDetailedDateTime(lead.createdAt)}
           </span>
           <Button variant="secondary" size="sm" onClick={onClose}>
-            Close
+            Close File
           </Button>
         </div>
       </div>

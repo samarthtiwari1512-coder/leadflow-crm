@@ -18,10 +18,10 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <input
           type={type}
           className={cn(
-            "flex h-9 w-full rounded-md border border-cloud-border bg-surface px-3 py-1.5 text-sm text-ink placeholder:text-ink-subtle",
+            "flex h-9 w-full rounded-[3px] border border-cloud-border bg-surface px-3 py-1.5 text-xs sm:text-sm text-ink placeholder:text-ink-subtle",
             "transition-colors outline-none",
-            "hover:border-slate-300",
-            "focus:border-blue focus:ring-2 focus:ring-blue/15",
+            "hover:border-ink-subtle",
+            "focus:border-forest focus:ring-1 focus:ring-forest",
             "disabled:cursor-not-allowed disabled:opacity-50",
             icon && "pl-9",
             className

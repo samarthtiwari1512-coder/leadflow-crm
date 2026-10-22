@@ -6,7 +6,7 @@ import {
   FileCheck2,
   CheckCircle2,
   XCircle,
-  AlertCircle,
+  AlertTriangle,
   Clock,
 } from "lucide-react";
 import { LeadStatus } from "@/types/lead";
@@ -19,8 +19,8 @@ interface StatusBadgeProps {
 }
 
 /**
- * StatusBadge ensures accessibility by pairing distinctive icons and shapes
- * alongside color tokens so status is never conveyed by color alone.
+ * StatusBadge styled as a crisp, rectangular editorial tag.
+ * Pairs clear iconography and accessible contrast without generic bubble pills.
  */
 export const StatusBadge: React.FC<StatusBadgeProps> = ({
   status,
@@ -29,21 +29,25 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
 }) => {
   const sizeClasses =
     size === "sm"
-      ? "text-[11px] px-2 py-0.5 gap-1"
-      : "text-xs px-2.5 py-1 gap-1.5";
+      ? "text-[10px] px-1.5 py-0.5 gap-1 tracking-wider"
+      : "text-[11px] px-2 py-0.5 gap-1.5 tracking-wider";
+
+  const baseClasses =
+    "inline-flex items-center font-medium rounded-[2px] uppercase select-none border";
 
   switch (status) {
     case "New":
       return (
         <span
           className={cn(
-            "inline-flex items-center font-medium rounded-full border border-blue-border bg-blue-subtle text-blue",
+            baseClasses,
+            "border-forest-border bg-forest-subtle text-forest font-semibold",
             sizeClasses,
             className
           )}
           aria-label="Status: New Lead"
         >
-          <Sparkles className="w-3 h-3 text-blue shrink-0" aria-hidden="true" />
+          <Sparkles className="w-2.5 h-2.5 text-forest shrink-0" aria-hidden="true" />
           <span>New</span>
         </span>
       );
@@ -52,13 +56,14 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
       return (
         <span
           className={cn(
-            "inline-flex items-center font-medium rounded-full border border-slate-300 bg-slate-100 text-slate-700",
+            baseClasses,
+            "border-[#DCD6C7] bg-[#EFECE4] text-ink-secondary",
             sizeClasses,
             className
           )}
           aria-label="Status: Contacted"
         >
-          <PhoneCall className="w-3 h-3 text-slate-600 shrink-0" aria-hidden="true" />
+          <PhoneCall className="w-2.5 h-2.5 text-ink-muted shrink-0" aria-hidden="true" />
           <span>Contacted</span>
         </span>
       );
@@ -67,13 +72,14 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
       return (
         <span
           className={cn(
-            "inline-flex items-center font-medium rounded-full border border-indigo-200 bg-indigo-50 text-indigo-700",
+            baseClasses,
+            "border-sage-border bg-sage text-forest font-semibold",
             sizeClasses,
             className
           )}
           aria-label="Status: Qualified"
         >
-          <ShieldCheck className="w-3 h-3 text-indigo-600 shrink-0" aria-hidden="true" />
+          <ShieldCheck className="w-2.5 h-2.5 text-forest shrink-0" aria-hidden="true" />
           <span>Qualified</span>
         </span>
       );
@@ -82,28 +88,31 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
       return (
         <span
           className={cn(
-            "inline-flex items-center font-medium rounded-full border border-amber-300 bg-amber-50 text-amber-900",
+            baseClasses,
+            "border-[#E8D4B0] bg-[#F8F2E4] text-[#7A5415] font-semibold",
             sizeClasses,
             className
           )}
           aria-label="Status: Proposal Sent"
         >
-          <FileCheck2 className="w-3 h-3 text-amber-700 shrink-0" aria-hidden="true" />
+          <FileCheck2 className="w-2.5 h-2.5 text-[#7A5415] shrink-0" aria-hidden="true" />
           <span>Proposal Sent</span>
         </span>
       );
 
     case "Won":
+      // Terracotta highlight for key milestone
       return (
         <span
           className={cn(
-            "inline-flex items-center font-medium rounded-full border border-mint-border bg-mint text-mint-dark",
+            baseClasses,
+            "border-terracotta-border bg-terracotta-subtle text-terracotta font-bold",
             sizeClasses,
             className
           )}
           aria-label="Status: Won"
         >
-          <CheckCircle2 className="w-3 h-3 text-mint-dark shrink-0" aria-hidden="true" />
+          <CheckCircle2 className="w-2.5 h-2.5 text-terracotta shrink-0" aria-hidden="true" />
           <span>Won</span>
         </span>
       );
@@ -112,28 +121,31 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
       return (
         <span
           className={cn(
-            "inline-flex items-center font-medium rounded-full border border-slate-300 bg-slate-100 text-slate-600",
+            baseClasses,
+            "border-[#DDD7C9] bg-[#EBE7DD] text-ink-muted",
             sizeClasses,
             className
           )}
           aria-label="Status: Lost"
         >
-          <XCircle className="w-3 h-3 text-slate-500 shrink-0" aria-hidden="true" />
+          <XCircle className="w-2.5 h-2.5 text-ink-subtle shrink-0" aria-hidden="true" />
           <span>Lost</span>
         </span>
       );
 
     case "Overdue":
+      // Crisp editorial crimson for urgent attention
       return (
         <span
           className={cn(
-            "inline-flex items-center font-semibold rounded-full border border-coral-border bg-coral-subtle text-coral-dark",
+            baseClasses,
+            "border-coral-border bg-coral-subtle text-coral-dark font-bold",
             sizeClasses,
             className
           )}
           aria-label="Urgent: Follow-up is Overdue"
         >
-          <AlertCircle className="w-3 h-3 text-coral-dark shrink-0" aria-hidden="true" />
+          <AlertTriangle className="w-2.5 h-2.5 text-coral-dark shrink-0" aria-hidden="true" />
           <span>Overdue</span>
         </span>
       );
@@ -142,13 +154,14 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
       return (
         <span
           className={cn(
-            "inline-flex items-center font-medium rounded-full border border-blue-border bg-blue-subtle text-blue",
+            baseClasses,
+            "border-forest-border bg-forest-subtle text-forest font-semibold",
             sizeClasses,
             className
           )}
           aria-label="Scheduled for Today"
         >
-          <Clock className="w-3 h-3 text-blue shrink-0" aria-hidden="true" />
+          <Clock className="w-2.5 h-2.5 text-forest shrink-0" aria-hidden="true" />
           <span>Today</span>
         </span>
       );
