@@ -1,6 +1,6 @@
 # LeadFlow — Lead Management CRM
 
-LeadFlow is a single-screen Lead Management CRM built for fintech and enterprise sales teams. It combines the **Midnight Fintech** design system with an atomic, file-backed JSON datastore and Next.js App Router architecture.
+LeadFlow is a single-screen Lead Management CRM built for fintech and enterprise sales teams. It combines an **Editorial Fintech** design system (warm ivory canvas, deep forest green accents, terracotta highlights) with an atomic, file-backed JSON datastore and Next.js App Router architecture.
 
 Developed as part of the Full Stack Developer Intern coding assessment at **Pravar AI**.
 
@@ -15,7 +15,7 @@ Developed as part of the Full Stack Developer Intern coding assessment at **Prav
 6. [API Documentation](#api-documentation)
 7. [Testing, QA Verification & Known Limitations](#testing-qa-verification--known-limitations)
 8. [Manual Acceptance Test & Demo Plan (2–3 Minutes)](#manual-acceptance-test--demo-plan-23-minutes)
-9. [Screenshot & Video Capture Checklist](#screenshot--video-capture-checklist)
+9. [Screenshots & Visual Walkthrough](#screenshots--visual-walkthrough)
 
 ---
 
@@ -24,9 +24,10 @@ Developed as part of the Full Stack Developer Intern coding assessment at **Prav
 LeadFlow provides a lightweight, focused CRM dashboard designed to manage sales pipelines and follow-up commitments without unnecessary complexity.
 
 ### Core Capabilities
-- **Midnight Fintech Design Identity**:
-  - Purposeful color palette: **Ink** (`#17243A`), **Blue** (`#365CF5`), **Mint** (`#D9F5E7`), **Cloud** (`#F7F8FA`), and **Coral** (`#E66B59`).
-  - Dark header, clean white card surfaces, subtle borders, restrained box shadows, and Google Geist typography.
+- **Editorial Fintech Design Identity**:
+  - Purposeful, tactile color palette: **Warm Ivory** canvas (`#F5F1E8`), **Deep Forest Green** (`#244C3A`), **Terracotta** accent (`#D97757`), **Charcoal** typography (`#282A25`), **Muted Sage** (`#DCE5D8`), and **Warm Cream** surfaces (`#FFFEFA`).
+  - Solid, intentional tones with refined contrast (zero generic SaaS gradients or glowing neon cards).
+  - Editorial typography pairing classic serif display headers with clean, readable sans-serif metadata.
   - Multi-attribute accessible badges pairing unique geometric shapes and icons alongside colors so status is never conveyed by color alone.
 - **Priority Follow-ups & Reminders**:
   - Section pinned directly above the main pipeline for immediate daily attention.
@@ -325,7 +326,7 @@ Use this step-by-step walkthrough to demonstrate the CRM:
 
 1. **Dashboard & Summary Strip (30s)**:
    - Open [http://localhost:3000](http://localhost:3000).
-   - Point out the Midnight Fintech design system (dark header, custom tokens, Geist font).
+   - Point out the Editorial Fintech design system (warm ivory canvas, forest green accents, refined serif typography, and solid surface cards).
    - Highlight the 3 summary metrics: **Active Pipeline Leads (7)**, **Today's Follow-ups (3)**, and **Overdue Follow-ups (4)**.
 2. **Priority Follow-ups Section (20s)**:
    - Show the pinned section above the pipeline.
@@ -353,17 +354,24 @@ Use this step-by-step walkthrough to demonstrate the CRM:
 
 ---
 
-## Screenshot & Video Capture Checklist
+## Screenshots & Visual Walkthrough
 
-For submission attachments or portfolio documentation, capture the following states:
+The following screenshots capture the live application in its editorial fintech aesthetic:
 
-- [ ] **1. Full Dashboard Overview**: Desktop view (1440x900) showing header, summary strip, pinned follow-ups, and lead list.
-- [ ] **2. Status Filter in Action**: View with `Proposal Sent` or `Qualified` tab active showing filtered results and count badges.
-- [ ] **3. Search Filtering**: View showing live search query with contact/company matching.
-- [ ] **4. Lead Detail Modal**: Dialog open for *Elena Rostova* displaying contact details, status selector, note form, and multi-entry timeline.
-- [ ] **5. Add New Lead Modal**: Modal open showing required field indicator and optional inputs.
-- [ ] **6. Overdue Urgency Highlight**: Close-up of the priority follow-ups section showing Coral overdue cards vs Today cards.
-- [ ] **7. Mobile Viewport (Optional)**: 390px responsive view showing mobile layout and scrollable filter tabs.
+### 1. Main Dashboard Overview
+*Desktop overview showing the warm ivory canvas, forest green branding, key metrics strip (Active Pipeline Leads, Today's Follow-ups, Overdue Follow-ups), pinned priority follow-up actions, and searchable pipeline opportunity table.*
+
+![LeadFlow Main Dashboard](screenshots/Screenshot%20From%202026-10-23%2004-05-39.png)
+
+### 2. Lead Timeline Dialog
+*Accessible modal dialog for Harrison Cole featuring pipeline stage progression selector, contact metadata, quick note creation with follow-up scheduling, and reverse-chronological discussion timeline with scheduled next steps.*
+
+![Lead Timeline Dialog](screenshots/Screenshot%20From%202026-10-23%2004-06-02.png)
+
+### 3. Add Lead Dialog
+*New opportunity dialog with required Lead Contact Name validation, optional organization/contact details, initial pipeline stage selection, initial note, and follow-up date toggle.*
+
+![Add Lead Dialog](screenshots/Screenshot%20From%202026-10-23%2004-05-47.png)
 
 ---
 
